@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "axis_user_dev",
+    "password": "axis-admin-dev",
+    "database": "axis_dev",
+    "host": "axispostgres",
+    "dialect": "postgres",
+    "port": 5432
+  }
+}
