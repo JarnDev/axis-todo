@@ -1,73 +1,60 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+- [x] Login with user+pass
+  - [x] get a JWT token for any other request
+- [x] Rest interface to CREATE, PATCH, DELETE a  TO-DO
+  - [x] authenticated with JWT1
+  - [x] marking them as created by the user that makes the request
+  - [x] You can also add a sub-task to a given TO-DO
+- [x] Rest interface to get all my  TO-DOs GET /todos
+  - [x] authenticated with JWT
+  - [x] returns all the TO-DOs that belong to the user that makes the request
+  	
+Business rules:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+- [x] The name must have between 8 and 16 characters
+- [x] The date of the TODO can't be Saturday or Sunday
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Considerations:
 
-## Description
+- [x] Write Sequelize migrations to create models in DB
+- [x] Add a docker-compose that runs the app and sets up a PostgreSQL
+- [x] Ensure to write unit tests for the TO-DO business rules.
+- [x] Ensure integration tests that ensure that you can only get TO-DOs that are yours.
+- [x] No need to build any frontend. A working backend accessible through  Postman is enough
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
-
+Runnig 
 ```bash
-$ npm install
+# sets up the project: CreateDB -> CreateTestDB -> Build Image -> Run Migration ->  Run Seeds -> Start Server
+docker-compose up
+``` 
+
+To run Unit test that ensure busines logic:
+```bash
+npm run test
 ```
 
-## Running the app
-
+To run Integration/e2e make sure the project is not running and run:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# This command gonna create the TestDB -> Run Migrations -> Populate with Seeds -> And run tests
+npm run test:e2e
 ```
 
-## Test
-
+To run migrations:
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run db:migrate
 ```
 
-## Support
+To run seeds:
+```bash
+npm run db:seed:all
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+A Swagger openAPI interface is enabled through ``/api/docs`` route
 
-## Stay in touch
+![Image](../../Git_JarnDev/axis/docs/swagger.PNG)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+The default login is: 
 
-## License
+user: teste | pass: 1234
 
-Nest is [MIT licensed](LICENSE).
+to be able to use locked routes, you will need to Login, copy the token and paste it at the Authorization section
