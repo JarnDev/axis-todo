@@ -51,7 +51,7 @@ npm run db:seed:all
 
 A Swagger openAPI interface is enabled through ``/api/docs`` route
 
-![Image](../../Git_JarnDev/axis/docs/swagger.PNG)
+![Image](docs/swagger.PNG)
 
 The default login is: 
 
