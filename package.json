@@ -23,9 +23,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "pretest:e2e": "docker-compose up --no-start axis-postgres-test && docker-compose start axis-postgres-test && cross-env NODE_ENV=test npm run db:migrate && cross-env NODE_ENV=test npm run db:seed:all",
+    "pretest:e2e": "docker-compose up --no-start axispostgrestest && docker-compose start axispostgrestest && cross-env NODE_ENV=test npm run db:migrate && cross-env NODE_ENV=test npm run db:seed:all",
     "test:e2e": "jest --config ./test/jest-e2e.json || npm run posttest:e2e",
-    "posttest:e2e": "docker-compose rm -sf axis-postgres-test"
+    "posttest:e2e": "docker-compose rm -sf axispostgrestest"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
