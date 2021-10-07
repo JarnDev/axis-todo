@@ -41,6 +41,7 @@ services:
       POSTGRES_PORT: 5432
       JWT_SECRET: ${JWT_SECRET}
       SERVE_FILE_PATH: http://[::1]/images
+      HONEYCOMB_KEY: ${HONEYCOMB_KEY}
     networks:
       - local
     volumes:
